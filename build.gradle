@@ -25,7 +25,10 @@ dependencies {
     // to recognize webapp folder
     compile 'org.springframework:spring-core:4.1.2.RELEASE',
             'org.springframework:spring-web:4.1.2.RELEASE',
-            'org.springframework:spring-webmvc:4.1.2.RELEASE'
+            'org.springframework:spring-webmvc:4.1.2.RELEASE',
+            'org.hibernate:hibernate-core:4.3.7.Final',
+            'mysql:mysql-connector-java:5.1.6',
+            'com.google.code.gson:gson:1.7.2'
 
     testCompile("junit:junit")
 }
