@@ -13,12 +13,8 @@
 
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<property name="prefix">
-			<value>/WEB-INF/pages/</value>
-		</property>
-		<property name="suffix">
-			<value>.jsp</value>
-		</property>
+		<property name="prefix" value="/WEB-INF/pages/" />
+		<property name="suffix" value=".jsp" />
 	</bean>
 
 	<bean class="org.apache.commons.dbcp.BasicDataSource" id="dataSource">
@@ -41,10 +37,8 @@
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 
-	<bean class="example.dao.ExampleDAO" id="userDao">
-		<constructor-arg>
-			<ref bean="sessionFactory" />
-		</constructor-arg>
+	<bean class="example.dao.ExampleDAO" id="exampleDao">
+		<constructor-arg ref="sessionFactory" />
 	</bean>
 
 </beans>
