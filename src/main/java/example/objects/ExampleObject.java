@@ -18,7 +18,6 @@ public class ExampleObject
 
 	public ExampleObject()
 	{
-		setId(-1);
 		setName("");
 	}
 
