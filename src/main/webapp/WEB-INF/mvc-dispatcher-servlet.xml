@@ -37,8 +37,8 @@
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 
-	<bean class="example.dao.ExampleDAO" id="exampleDao">
-		<constructor-arg ref="sessionFactory" />
-	</bean>
+	<!--<bean class="example.dao.ExampleDAO" id="exampleDao">-->
+		<!--<constructor-arg ref="sessionFactory" />-->
+	<!--</bean>-->
 
 </beans>

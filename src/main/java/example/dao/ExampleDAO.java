@@ -3,22 +3,24 @@ package example.dao;
 import example.objects.ExampleObject;
 import org.hibernate.Hibernate;
 import org.hibernate.SessionFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-@Component
+//@Component
 public class ExampleDAO
 {
-	@Autowired
-	SessionFactory sessionFactory_;
+	private SessionFactory sessionFactory;
+
+	public ExampleDAO(SessionFactory sessionFactory)
+	{
+		this.sessionFactory = sessionFactory;
+	}
 
 	@Transactional(readOnly = true)
 	public List<ExampleObject> get()
 	{
-		return sessionFactory_.getCurrentSession().
+		return sessionFactory.getCurrentSession().
 				createQuery("from example_object").list();
 	}
 
@@ -26,7 +28,7 @@ public class ExampleDAO
 	public ExampleObject get(String id)
 	{
 		ExampleObject object =
-				(ExampleObject) sessionFactory_.getCurrentSession().
+				(ExampleObject) sessionFactory.getCurrentSession().
 						load(ExampleObject.class, Long.valueOf(id));
 		Hibernate.initialize(object);
 		return object;
@@ -37,7 +39,7 @@ public class ExampleDAO
 	{
 		if (object != null)
 		{
-			sessionFactory_.getCurrentSession().save(object);
+			sessionFactory.getCurrentSession().save(object);
 		}
 	}
 }

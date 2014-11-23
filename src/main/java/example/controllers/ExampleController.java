@@ -19,6 +19,17 @@ public class ExampleController
 	@ResponseBody
 	public String get()
 	{
+		System.out.println("Called get");
+		return new Gson().toJson(new ExampleObject());
+	}
+
+	@RequestMapping(value = "/get/{id}",
+			method = RequestMethod.GET,
+			produces = MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	public String get(@PathVariable String id)
+	{
+		System.out.println("Received |" + id + "|");
 		return new Gson().toJson(new ExampleObject());
 	}
 
@@ -28,6 +39,9 @@ public class ExampleController
 	@ResponseBody
 	public String add(@PathVariable String name)
 	{
+		ExampleObject object = new ExampleObject();
+		object.setName(name);
+		System.out.println(object);
 		return new Gson().toJson(new ExampleObject());
 	}
 }
