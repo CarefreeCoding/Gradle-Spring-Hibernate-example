@@ -17,7 +17,8 @@
 		<property name="suffix" value=".jsp" />
 	</bean>
 
-	<bean class="org.apache.commons.dbcp.BasicDataSource" id="dataSource">
+	<bean class="org.springframework.jdbc.datasource.DriverManagerDataSource"
+		id="dataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
 		<property name="url"
 			value="jdbc:mysql://localhost:3306/gradle_hibernate_example" />
@@ -37,8 +38,10 @@
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 
-	<!--<bean class="example.dao.ExampleDAO" id="exampleDao">-->
-		<!--<constructor-arg ref="sessionFactory" />-->
-	<!--</bean>-->
+	<bean class="example.dao.ExampleDAO" id="exampleDao">
+		<constructor-arg>
+			<ref bean="sessionFactory" />
+		</constructor-arg>
+	</bean>
 
 </beans>
